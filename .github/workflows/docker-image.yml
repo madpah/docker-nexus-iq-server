@@ -18,7 +18,7 @@ jobs:
     - name: Determine Version
       run: echo "NXIQ_VERSION=$(grep release Dockerfile  | cut -d "=" -f2 | tr -d '" \')" >> $GITHUB_ENV
       
-    - run: echo "Building NXIQ ${{ env.NXRM_VERSION }} for ARM"
+    - run: echo "Building NXIQ ${{ env.NXIQ_VERSION }} for ARM"
     
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -36,4 +36,4 @@ jobs:
         file: ./Dockerfile
         platforms: linux/arm64,linux/amd64
         push: true
-        tags: madpah/nexus-iq-server:latest , madpah/nexus-iq-server:${{ env.NXRM_VERSION }}
+        tags: madpah/nexus-iq-server:latest , madpah/nexus-iq-server:${{ env.NXIQ_VERSION }}
