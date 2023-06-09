@@ -37,3 +37,12 @@ jobs:
         platforms: linux/arm64,linux/amd64
         push: true
         tags: madpah/nexus-iq-server:latest , madpah/nexus-iq-server:${{ env.NXIQ_VERSION }}
+        
+    - name: Build and push (SLIM)
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        file: ./Dockerfile.slim
+        platforms: linux/arm64,linux/amd64
+        push: true
+        tags: madpah/nexus-iq-server:latest-slim , madpah/nexus-iq-server:${{ env.NXIQ_VERSION }}-slim
